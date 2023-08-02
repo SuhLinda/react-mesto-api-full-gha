@@ -1,0 +1,16 @@
+.header__container {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  max-height: 22px;
+  font-family: 'Inter', 'Arial', 'sans-serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  background-color: #000000;
+  border: 0 #000000;
+  margin: 0;
+  padding: 0;
+}

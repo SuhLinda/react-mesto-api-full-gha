@@ -1,0 +1,17 @@
+.element {
+  display: grid;
+  grid-template-columns: 1fr 52px;
+  z-index: 1;
+  justify-items: start;
+  align-items: flex-start;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  width: 282px;
+  margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .element {
+    margin: 0 auto;
+  }
+}

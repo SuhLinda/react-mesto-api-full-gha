@@ -1,0 +1,14 @@
+.login__text {
+  max-width: 358px;
+  max-height: 17px;
+  font-family: 'Inter', 'Arial', 'sans-serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  cursor: pointer;
+}

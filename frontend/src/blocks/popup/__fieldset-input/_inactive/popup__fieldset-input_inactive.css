@@ -1,0 +1,16 @@
+.popup__fieldset-input_inactive {
+    color: #C4C4C4;
+}
+
+.popup__fieldset-input_inactive::placeholder {
+    color: #C4C4C4;
+    opacity: 1;
+}
+
+.popup__fieldset-input_inactive:-ms-input-placeholder {
+    color: #C4C4C4;
+}
+
+.popup__fieldset-input_inactive::-ms-input-placeholder {
+    color: #C4C4C4;
+}

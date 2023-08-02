@@ -1,0 +1,20 @@
+.login__button-enter {
+  max-width: 114px;
+  max-height: 22px;
+  font-family: 'Inter', 'Arial', 'sans-serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  background-color: #000000;
+  border: 0 #000000;
+  margin: 6px 0 35px;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.login__button-enter:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,23 @@
+.element__text {
+  grid-row: 2/3;
+  z-index: 1;
+  font-family: 'Inter', 'Arial', 'sans-serif';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 190px;
+  margin: 0 0 0 21px;
+  padding-bottom: 25px;
+}
+
+@media screen and (max-width: 600px) {
+  .element__text {
+    width: 246px;
+    padding-bottom: 31px;
+  }
+}

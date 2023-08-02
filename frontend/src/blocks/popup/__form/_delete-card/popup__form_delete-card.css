@@ -1,0 +1,6 @@
+.popup__form_delete-card{
+    width: 430px;
+    height: 110px;
+    display: flex;
+    align-items: flex-end;
+}

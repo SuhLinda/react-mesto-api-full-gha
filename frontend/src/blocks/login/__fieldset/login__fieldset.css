@@ -1,0 +1,11 @@
+.login__fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 30px;
+  max-width: 358px;
+  border: none;
+  outline: none;
+  margin: 0 auto 216px;
+  padding: 0;
+}

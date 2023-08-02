@@ -1,0 +1,18 @@
+.element__stroke {
+  grid-row: 2/3;
+  grid-column: 2/3;
+  z-index: 2;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: #FFFFFF;
+  background-image: url(../../../image/element__stroke.svg);
+  background-repeat: no-repeat;
+  width: 22px;
+  height: 19px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.element__stroke:hover {
+  opacity: 0.5;
+}

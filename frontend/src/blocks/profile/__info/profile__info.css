@@ -1,0 +1,29 @@
+.profile__info {
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  column-gap: 18px;
+  align-content: center;
+  align-items: center;
+  font-family: 'Inter', 'Arial', 'sans-serif';
+  font-style: normal;
+  color: #FFFFFF;
+  max-width: 336px;
+  margin: 0 auto 0 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .profile__info {
+    margin: 0 auto 0 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__info {
+    grid-template-columns: 1fr 18px;
+    column-gap: 10px;
+    align-items: baseline;
+    max-width: 282px;
+    margin: 28px 19px 32px 44px;
+    text-align: center;
+  }
+}

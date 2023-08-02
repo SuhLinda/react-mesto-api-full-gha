@@ -1,0 +1,26 @@
+.profile__image-button{
+    background-image: url(../../../image/profile__pencil.svg);
+    position: absolute;
+    border: none;
+    color: #FFFFFF;
+
+    z-index: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    opacity: 0;
+
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+.profile__image-button:hover {
+
+    background-color: #000;
+    opacity: .8;
+}

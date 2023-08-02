@@ -1,0 +1,13 @@
+.login__fieldset-input {
+  font-family: 'Inter', 'Arial', 'sans-serif';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #CCCCCC;
+  border: none;
+  border-bottom: 2px solid #CCCCCC;
+  outline: none;
+  padding-bottom: 8px;
+  background-color: #000000;
+}
