@@ -75,16 +75,37 @@ function createUser(req, res, next) {
 }
 
 function login(req, res, next) {
-  const { email, password } = req.body;
+  const {
+    email,
+    password,
+    name,
+    about,
+    avatar,
+    _id,
+  } = req.body;
 
-  return User.findUserByCredentials(email, password)
+  return User.findUserByCredentials(
+    email,
+    password,
+    name,
+    about,
+    avatar,
+    _id,
+  )
     .then((user) => {
       const token = jwt.sign(
         { _id: user._id },
         'some-secret-key',
         { expiresIn: '7d' },
       );
-      res.send({ token });
+      res.send({
+        token,
+        email,
+        name,
+        about,
+        avatar,
+        _id,
+      });
     })
     .catch((err) => {
       next(new ErrorUnauthorized('Неправильные почта или пароль'));

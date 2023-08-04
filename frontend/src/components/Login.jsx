@@ -1,10 +1,14 @@
-import React from "react";
-import Header from "./Header.jsx";
-import { Link } from "react-router-dom";
+import React, {useState} from 'react';
+import Header from './Header.jsx';
+import { Link } from 'react-router-dom';
 
-function Login({onLogin}) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+function Login(
+  {
+    onLogin
+  }
+  ) {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   function handleChangeEmail(evt) {
     setEmail(evt.target.value);

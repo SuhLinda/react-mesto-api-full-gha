@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
-import { AppContext } from "../contexts/AppContext.js";
-import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
-import ProtectedRoute from "./ProtectedRoute.jsx";
-import Main from "./Main.jsx";
-import Login from "./Login.jsx";
-import Register from "./Register.jsx";
-import InfoTooltip from "./InfoTooltip.jsx";
-import ImagePopup from "./ImagePopup.jsx";
-import EditProfilePopup from "./EditProfilePopup.jsx";
-import EditAvatarPopup from "./EditAvatarPopup.jsx";
-import AddPlacePopup from "./AddPlacePopup.jsx";
-import DeleteCardPopup from "./DeleteCardPopup.jsx";
-import { api } from "../utils/Api.js";
-import { auth } from "../utils/auth.jsx";
-import successfully from "../image/popup__info-tooltip_successfully.svg";
-import unsuccessfully from "../image/popup__info-tooltip_unsuccessfully.svg";
+import React, { useState, useEffect } from 'react';
+import {Navigate, Route, Routes, useNavigate} from 'react-router-dom';
+import { AppContext } from '../contexts/AppContext.js';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import ProtectedRoute from './ProtectedRoute.jsx';
+import Main from './Main.jsx';
+import Login from './Login.jsx';
+import Register from './Register.jsx';
+import InfoTooltip from './InfoTooltip.jsx';
+import ImagePopup from './ImagePopup.jsx';
+import EditProfilePopup from './EditProfilePopup.jsx';
+import EditAvatarPopup from './EditAvatarPopup.jsx';
+import AddPlacePopup from './AddPlacePopup.jsx';
+import DeleteCardPopup from './DeleteCardPopup.jsx';
+import { api } from '../utils/Api.js';
+import { auth } from '../utils/auth.jsx';
+import successfully from '../image/popup__info-tooltip_successfully.svg';
+import unsuccessfully from '../image/popup__info-tooltip_unsuccessfully.svg';
 
 function App() {
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
@@ -39,19 +39,32 @@ function App() {
 
   const navigate = useNavigate();
 
-  useEffect(()=> {
-    if(isLoggedIn) {
-      Promise.all([
-        api.getUserData(),
-        api.getInitialCards()
-      ])
-          .then(([user, card]) => {
-            setCurrentUser(user);
-            setCards(card);
-          })
-          .catch((err) => {
-            console.log(`ошибка: ${err}`);
-          })
+  useEffect(() => {
+    checkToken();
+  }, []);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      api.getUserData()
+        .then((data) => {
+          console.log(data)
+          setCurrentUser(data);
+        })
+        .catch((err) => {
+          console.log(`ошибка: ${err}`);
+        })
+    }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      api.getInitialCards()
+        .then((cards) => {
+          setCards(cards.reverse());
+        })
+        .catch((err) => {
+          console.log(`ошибка: ${err}`);
+        })
     }
   }, [isLoggedIn]);
 
@@ -60,10 +73,6 @@ function App() {
     setErrorMessage({});
     setToggleOfTheInputText(true);
   }, [isEditProfilePopupOpen, isEditAvatarPopupOpen, isAddPlacePopupOpen]);
-
-  useEffect(() => {
-    checkToken();
-  }, []);
 
   function isValid(evt) {
     if(!evt.currentTarget.checkValidity) {
@@ -115,12 +124,11 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(item =>
-      item._id === currentUser._id
+    const isLiked = card.likes.some(card =>
+      card === currentUser.data._id
     );
-
     // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.changeLikeCardStatus(card._id, !isLiked)
+    return api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) =>
           state.map((item) =>
@@ -154,18 +162,18 @@ function App() {
     handleSubmit(makeRequestCardDelete);
   }
 
-  function handleUpdateUser(data) {
+  function handleUpdateUser(name, about) {
     function makeRequestUpdateUser() {
-      return api.setUserData(data)
+      return api.setUserData(name, about)
         .then(setCurrentUser)
         .catch(console.error)
     }
     handleSubmit(makeRequestUpdateUser);
   }
 
-  function handleUpdateUserAvatar(data) {
+  function handleUpdateUserAvatar(avatar) {
     function makeRequestUpdateUserAvatar() {
-      return api.setUserAvatar(data)
+      return api.setUserAvatar(avatar)
         .then(setCurrentUser)
         .catch(console.error)
     }
@@ -176,12 +184,23 @@ function App() {
     function makeRequestUpdateCards() {
       return api.addNewCard(data)
         .then((data) => {
-          const newCard = data;
+          const newCard = {
+            _id: data._id,
+            name: data.name,
+            link: data.link,
+            likes: data.likes,
+            owner: {
+              name: data.owner.name,
+              about: data.owner.about,
+              avatar: data.owner.avatar,
+              _id: data.owner._id,
+            },
+          };
           setCards([newCard, ...cards]);
         })
         .catch(console.error)
     }
-    handleSubmit(makeRequestUpdateCards)
+    handleSubmit(makeRequestUpdateCards);
   }
 
   function onRegister(email, password) {
@@ -189,9 +208,9 @@ function App() {
       .then((response) => {
         if (response) {
           setSuccess(true);
-          navigate("sign-in", {replace: true});
           setImage(successfully);
           setText("Вы успешно зарегистрировались!");
+          navigate("sign-in", {replace: true});
         }
       })
       .catch((response) => {
@@ -206,14 +225,23 @@ function App() {
   function onLogin(email, password) {
     auth.authorization(email, password)
       .then((response) => {
-        if(response) {
-          const token = response.token;
-          localStorage.setItem('token', token);
-          navigate('/', {replace: true});
+        if (response.token) {
+          setSuccess(true);
+          //const token = response.token;
+          localStorage.setItem('token', response.token);
+          setCurrentUser({
+            email,
+            password,
+            name: response.name,
+            about: response.about,
+            avatar: response.avatar,
+            _id: response._id,
+          });
           setLoggedIn(true);
-          setEmail(email);
           setImage(successfully);
           setText("Вы успешно зарегистрировались!");
+          navigate('/', {replace: true});
+          setEmail(response.email);
         }
       })
       .catch((response) => {
@@ -221,7 +249,7 @@ function App() {
         setImage(unsuccessfully);
         setText("Что-то пошло не так! Попробуйте ещё раз.");
       })
-        .finally(handleInfoTooltipClick)
+      .finally(handleInfoTooltipClick)
   }
 
   function checkToken(){
@@ -229,9 +257,11 @@ function App() {
     if (token) {
       auth.checkToken(token)
         .then((response) => {
-          navigate('/', {replace: true});
-          setLoggedIn(true);
+          //console.log(response)
+          setCurrentUser(response);
           setEmail(response.data.email);
+          setLoggedIn(true);
+          navigate('/', {replace: true});
         })
         .catch(console.error);
     }
@@ -246,7 +276,7 @@ function App() {
 
   return (
     <AppContext.Provider value={{ isLoading, closeAllPopups }}>
-      <CurrentUserContext.Provider value={currentUser}>
+      <CurrentUserContext.Provider value={currentUser || ''}>
         <div className="page">
           <Routes>
             <Route path='/' element={

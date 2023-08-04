@@ -1,10 +1,22 @@
-import React from "react";
-import Card from "./Card.jsx";
-import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
+import React from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import Card from './Card.jsx';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 
-function Main({cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete, email, logOut}) {
+function Main(
+  {
+    cards,
+    email,
+    onEditProfile,
+    onAddPlace,
+    onEditAvatar,
+    onCardClick,
+    onCardLike,
+    onCardDelete,
+    logOut,
+  }
+  ) {
   const currentUser = React.useContext(CurrentUserContext);
 
   return (
@@ -26,7 +38,7 @@ function Main({cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCa
           <section className="profile">
             <img
               className="profile__image"
-              src={currentUser.avatar}
+              src={currentUser.data.avatar || ''}
               alt="Имя"/>
             <button
               className="profile__image-button"
@@ -34,7 +46,7 @@ function Main({cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCa
               onClick={onEditAvatar}>
             </button>
             <div className="profile__info">
-              <h1 className="profile__info-title">{currentUser.name}
+              <h1 className="profile__info-title">{currentUser.data.name || ''}
               </h1>
               <button
                 className="profile__info-edit"
@@ -43,7 +55,7 @@ function Main({cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCa
                 aria-label="редактировать профиль"
                 onClick={onEditProfile}>
               </button>
-              <p className="profile__info-subtitle">{currentUser.about}
+              <p className="profile__info-subtitle">{currentUser.data.about || ''}
               </p>
             </div>
             <button

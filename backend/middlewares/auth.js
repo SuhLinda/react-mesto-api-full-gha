@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const ErrorUnauthorized = require('../errors/ErrorUnauthorized');
 
@@ -12,7 +13,14 @@ function authorizationUser(req, res, next) {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'some-secret-key', { expiresIn: '7d' });
+    payload = jwt.verify(
+      token,
+      'some-secret-key',
+      { expiresIn: '7d' },
+    );
+    req.user = {
+      _id: new mongoose.Types.ObjectId(payload._id),
+    };
   } catch (err) {
     next(new ErrorUnauthorized('Необходима авторизация'));
   }

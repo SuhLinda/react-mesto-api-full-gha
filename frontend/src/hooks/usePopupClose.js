@@ -2,19 +2,19 @@ import React from 'react';
 
 function usePopupClose(isOpen, closePopup) {
   React.useEffect(() => {
-    if(!isOpen) return;
+    if (!isOpen) return;
 
     const handleOverlay = (evt) => {
-      if(evt.target.classList.contains('popup_opened')) {
+      if (evt.target.classList.contains('popup_opened')) {
         closePopup();
       }
-    }
+    };
 
     const handleEscape = (evt) => {
-      if(evt.key === 'Escape') {
+      if (evt.key === 'Escape') {
         closePopup();
       }
-    }
+    };
 
     document.addEventListener('mousedown', handleOverlay);
     document.addEventListener('keydown', handleEscape);
@@ -22,8 +22,8 @@ function usePopupClose(isOpen, closePopup) {
     return () => {
       document.removeEventListener('mousedown', handleOverlay);
       document.removeEventListener('keydown', handleEscape);
-    }
-  }, [isOpen, closePopup])
+    };
+  }, [isOpen, closePopup]);
 }
 
 export default usePopupClose;

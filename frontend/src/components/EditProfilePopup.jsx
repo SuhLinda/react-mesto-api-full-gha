@@ -2,7 +2,18 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm.jsx';
 import useFormAndValidationProfileEdit from '../hooks/useFormAndValidationProfileEdit.js';
 
-function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoading, onValidate, errorMessage, toggleButtonState, toggleOfTheInputText}) {
+function EditProfilePopup(
+  {
+    isOpen,
+    onClose,
+    onUpdateUser,
+    isLoading,
+    onValidate,
+    errorMessage,
+    toggleButtonState,
+    toggleOfTheInputText,
+  }
+  ) {
   const {
     currentUser,
     name,
@@ -19,19 +30,17 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser, isLoading, onValidate,
     setDescriptionError,
     handleChangeName,
     handleChangeDescription,
-    blurHandler
+    blurHandler,
   } = useFormAndValidationProfileEdit();
-
 
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
     setNameDirty(false);
     setDescriptionDirty(false);
-    setNameError("");
-    setDescriptionError("");
+    setNameError('');
+    setDescriptionError('');
   }, [currentUser, isOpen]);
-
 
   function handleSubmitUserInfo(evt) {
     evt.preventDefault();

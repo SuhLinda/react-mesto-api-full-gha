@@ -1,9 +1,15 @@
-import PopupWithForm from "./PopupWithForm.jsx";
+import PopupWithForm from './PopupWithForm.jsx';
 
-function DeleteCardPopup({isOpen, onClose, onDeleteCard, isLoading}) {
+function DeleteCardPopup(
+  {
+    isOpen,
+    onClose,
+    onDeleteCard,
+    isLoading,
+  }
+  ) {
   function handleSubmitDeleteCard(evt) {
     evt.preventDefault();
-
     onDeleteCard();
   }
 

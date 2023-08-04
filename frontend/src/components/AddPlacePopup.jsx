@@ -2,7 +2,18 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm.jsx';
 import useFormAndValidationAddPlace from '../hooks/useFormAndValidationAddPlace.js';
 
-function AddPlacePopup({isOpen, onClose, onUpdateCards, isLoading, onValidate, errorMessage, toggleButtonState, toggleOfTheInputText}) {
+function AddPlacePopup(
+  {
+    isOpen,
+    onClose,
+    onUpdateCards,
+    isLoading,
+    onValidate,
+    errorMessage,
+    toggleButtonState,
+    toggleOfTheInputText,
+  }
+  ) {
   const {
     name,
     setName,
@@ -18,16 +29,16 @@ function AddPlacePopup({isOpen, onClose, onUpdateCards, isLoading, onValidate, e
     setLinkError,
     handleChangeName,
     handleChangeLink,
-    blurHandler
+    blurHandler,
   } = useFormAndValidationAddPlace();
 
   React.useEffect(() => {
-    setName("");
-    setLink("");
+    setName('');
+    setLink('');
     setNameDirty(false);
     setLinkDirty(false);
-    setNameError("");
-    setLinkError("");
+    setNameError('');
+    setLinkError('');
   }, [isOpen]);
 
   function handleAddPlaceSubmit(evt) {

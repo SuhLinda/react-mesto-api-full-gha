@@ -1,10 +1,10 @@
-import React from "react";
-import Header from "./Header.jsx";
-import {Link} from "react-router-dom";
+import React from 'react';
+import Header from './Header.jsx';
+import { Link } from 'react-router-dom';
 
-function Register({onRegister}) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+function Register({ onRegister }) {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   function handleChangeEmail(evt) {
     setEmail(evt.target.value);
@@ -16,7 +16,7 @@ function Register({onRegister}) {
 
   function handleSubmitRegister(evt) {
     evt.preventDefault();
-    onRegister(email, password);ß
+    onRegister(email, password);
   }
 
   return (

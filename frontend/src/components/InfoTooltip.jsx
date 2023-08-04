@@ -1,6 +1,14 @@
-import usePopupClose from "../hooks/usePopupClose.js";
+import usePopupClose from '../hooks/usePopupClose.js';
 
-function InfoTooltip({name, image, text, isOpen, onClose}) {
+function InfoTooltip(
+  {
+    name,
+    image,
+    text,
+    isOpen,
+    onClose,
+  }
+  ) {
   usePopupClose(isOpen, onClose);
 
   return(

@@ -16,24 +16,31 @@ export default class Auth {
     return fetch(urlId,{
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({email, password})
     })
       .then(this._checkTheAnswer);
   }
 
-
-
-  authorization (email, password) {
+  authorization (email, password, name, about, avatar, _id) {
     const urlId = `${this._url}/signin`;
 
     return fetch(urlId,{
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({email, password})
+      body: JSON.stringify({
+        email,
+        password,
+        name,
+        about,
+        avatar,
+        _id
+      }),
     })
       .then(this._checkTheAnswer);
   }
@@ -44,13 +51,13 @@ export default class Auth {
     return fetch(urlId,{
       method: 'GET',
       headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization' : `Bearer ${token}`
-      }
+      },
     })
       .then(this._checkTheAnswer);
-
   }
 }
 
-export const auth = new Auth('https://auth.nomoreparties.co');
+export const auth = new Auth('http://localhost:5000');

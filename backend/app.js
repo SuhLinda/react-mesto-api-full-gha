@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
@@ -12,10 +13,12 @@ const routesUsers = require('./routes/users');
 const routesCards = require('./routes/cards');
 const routesNotFound = require('./routes/errorNotFound');
 
-const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { PORT = 5000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const app = express();
 mongoose.connect(DB_URL);
+
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 app.use(helmet());
 app.use(bodyParser.json());

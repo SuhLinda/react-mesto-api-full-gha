@@ -1,15 +1,23 @@
 class Api {
-  constructor({url, headers}) {
+  constructor({ url, headers }) {
     this._url = url;
     this._headers = headers;
   }
 
   //проверка на ошибки
-  _checkTheAnswer(response){
-    if(response.ok) {
+  _checkTheAnswer(response) {
+    if (response.ok) {
       return response.json();
     }
-    return Promise.reject(`Ошибка:${response.status}`)
+    return Promise.reject(`Ошибка:${response.status}`);
+  }
+
+  _setHeaders() {
+    const token = localStorage.getItem('token');
+    return {
+      ...this._headers,
+      'Authorization' : `Bearer ${token}`,
+    };
   }
 
   //запрос к серверу о данных пользователя
@@ -18,7 +26,7 @@ class Api {
 
     return fetch(urlId,{
       method: 'GET',
-      headers: this._headers
+      headers: this._setHeaders(),
     })
       .then(this._checkTheAnswer);
   }
@@ -29,23 +37,25 @@ class Api {
 
     return fetch(urlId, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         name: data.name,
-        about: data.about
-      })
+        about: data.about,
+        email: data.email,
+        avatar: data.avatar,
+      }),
     })
       .then(this._checkTheAnswer);
   }
 
   //смена аватара пользователя
-  setUserAvatar(avatar) {
+  setUserAvatar(data) {
     const urlId = `${this._url}/users/me/avatar`;
 
     return fetch(urlId, {
       method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify(avatar)
+      headers: this._setHeaders(),
+      body: JSON.stringify(data),
     })
       .then(this._checkTheAnswer);
   }
@@ -56,7 +66,7 @@ class Api {
 
     return fetch(urlId, {
       method: 'GET',
-      headers: this._headers
+      headers: this._setHeaders(),
     })
       .then(this._checkTheAnswer);
   }
@@ -67,45 +77,66 @@ class Api {
 
     return fetch(urlId, {
       method: 'POST',
-      headers: this._headers,
+      headers: this._setHeaders(),
       body: JSON.stringify({
         name: data.name,
-        link: data.link
-      })
+        link: data.link,
+        _id: data._id,
+        likes: data.likes,
+      }),
     })
       .then(this._checkTheAnswer);
   }
 
   //удалить карточку
-  deleteCard(id) {
-    const urlId = `${this._url}/cards/${id}`;
+  deleteCard(cardId) {
+    const urlId = `${this._url}/cards/${cardId}`;
 
     return fetch(urlId, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._setHeaders(),
+    })
+      .then(this._checkTheAnswer);
+  }
+
+  //поставить лайк
+  likesId(cardId) {
+    const urlId = `${this._url}/cards/${cardId}/likes`;
+
+    return fetch(urlId, {
+      method: 'PUT',
+      headers: this._setHeaders(),
+    })
+      .then(this._checkTheAnswer);
+  }
+
+  //удалить лайк
+  disLikesId(cardId) {
+    const urlId = `${this._url}/cards/${cardId}/likes`;
+
+    return fetch(urlId, {
+      method: 'DELETE',
+      headers: this._setHeaders(),
     })
       .then(this._checkTheAnswer);
   }
 
   //проверим лайки
-  changeLikeCardStatus(id, isLiked) {
-    const urlId = `${this._url}/cards/${id}/likes`;
-
-    return fetch(urlId, {
-      method: isLiked ? 'PUT' : 'DELETE',
-      headers: this._headers
-    })
-      .then(this._checkTheAnswer);
-  }
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.likesId(cardId);
+    }
+    return this.disLikesId(cardId);
+  };
 }
 
 //API_____________________________________________________________________________
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-65',
+  url: 'http://localhost:5000',
   headers: {
-    authorization: 'ebd0e12e-e8ad-4a47-b0fc-e1d7f7ab8ba5',
-    'Content-Type': 'application/json'
-  }
-})
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+});
 
-export {api};
+export { api };

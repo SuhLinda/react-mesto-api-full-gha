@@ -1,19 +1,18 @@
-import React from "react";
+import React from 'react';
 
 function useFormAndValidationAvatar() {
-  const [avatar, setAvatar] = React.useState("");
+  const [avatar, setAvatar] = React.useState('');
   const [avatarDirty, setAvatarDirty] = React.useState(false);
-  const [avatarError, setAvatarError] = React.useState("Заполните это поле.");
-
+  const [avatarError, setAvatarError] = React.useState('Заполните это поле.');
 
   function handleChangeAvatar(evt) {
     setAvatar(evt.target.value);
 
-    let pattern = "https://.*";
-    if(pattern) {
+    const pattern = 'https://.*';
+    if (pattern) {
       setAvatarError('Введите URL.');
     } else {
-      setAvatarError("");
+      setAvatarError('');
     }
   }
 
@@ -21,9 +20,9 @@ function useFormAndValidationAvatar() {
     switch (evt.target.name) {
       case 'avatar':
         setAvatarDirty(true);
-        break
+        break;
     }
-  }
+  };
 
   return {
     avatar,
@@ -33,7 +32,8 @@ function useFormAndValidationAvatar() {
     avatarError,
     setAvatarError,
     handleChangeAvatar,
-    blurHandler};
+    blurHandler,
+  };
 }
 
 export default useFormAndValidationAvatar;

@@ -2,7 +2,18 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm.jsx';
 import useFormAndValidationAvatar from '../hooks/useFormAndValidationAvatar.js';
 
-function EditAvatarPopup({isOpen, onClose, onUpdateUserAvatar, isLoading, onValidate, errorMessage, toggleButtonState, toggleOfTheInputText}) {
+function EditAvatarPopup(
+  {
+    isOpen,
+    onClose,
+    onUpdateUserAvatar,
+    isLoading,
+    onValidate,
+    errorMessage,
+    toggleButtonState,
+    toggleOfTheInputText,
+  }
+  ) {
   const {
     avatar,
     setAvatar,
@@ -11,20 +22,19 @@ function EditAvatarPopup({isOpen, onClose, onUpdateUserAvatar, isLoading, onVali
     avatarError,
     setAvatarError,
     handleChangeAvatar,
-    blurHandler
+    blurHandler,
   } = useFormAndValidationAvatar();
 
   React.useEffect(() => {
-    setAvatar("");
+    setAvatar('');
     setAvatarDirty(false);
-    setAvatarError("");
+    setAvatarError('');
   }, [isOpen]);
 
   function handleSubmitUserAvatar(evt) {
     evt.preventDefault();
-
     onUpdateUserAvatar({
-      avatar: avatar
+      avatar: avatar,
     });
   }
 

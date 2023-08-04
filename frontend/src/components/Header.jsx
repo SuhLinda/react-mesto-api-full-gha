@@ -1,7 +1,12 @@
 import React from 'react';
-import headerLogo from "../image/header__logo.svg";
+import headerLogo from '../image/header__logo.svg';
 
-function Header({email, buttonHeader}) {
+function Header(
+  {
+    email,
+    buttonHeader,
+  }
+  ) {
   return (
     <header className="header">
       <img

@@ -15,12 +15,17 @@ function getCards(req, res, next) {
 }
 
 function createCard(req, res, next) {
-  const { name, link } = req.body;
-  const owner = req.user._id;
-
-  return Card.create({ name, link, owner })
+  return Card.create({
+    ...req.body,
+    owner: {
+      _id: req.user._id,
+      name: req.user.name,
+      about: req.user.about,
+      avatar: req.user.avatar,
+    },
+  })
     .then((card) => {
-      res.status(201).send({ data: card });
+      res.status(201).send(card);
       throw new Success('Карточка создана');
     })
     .catch((err) => {
@@ -71,8 +76,8 @@ function likeCard(req, res, next) {
     .orFail(() => {
       throw new ErrorNotFound('Карточка не найдена');
     })
-    .then(() => {
-      res.status(200).send({ message: 'Like' });
+    .then((card) => {
+      res.status(200).send(card);
     })
     .catch((err) => {
       if (err.name === 'ValidationError' || err.name === 'CastError') {
@@ -94,8 +99,8 @@ function dislikeCard(req, res, next) {
     .orFail(() => {
       throw new ErrorNotFound('Карточка не найдена');
     })
-    .then(() => {
-      res.status(200).send({ message: 'Dislike' });
+    .then((card) => {
+      res.status(200).send(card);
     })
     .catch((err) => {
       if (err.name === 'ErrorBadRequest' || err.name === 'CastError') {

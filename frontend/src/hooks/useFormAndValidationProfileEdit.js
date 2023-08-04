@@ -1,5 +1,5 @@
-import React  from 'react';
-import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
+import React from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function useFormAndValidationProfileEdit() {
   const currentUser = React.useContext(CurrentUserContext);
@@ -7,30 +7,30 @@ function useFormAndValidationProfileEdit() {
   const [description, setDescription] = React.useState(currentUser.about);
   const [nameDirty, setNameDirty] = React.useState(false);
   const [descriptionDirty, setDescriptionDirty] = React.useState(false);
-  const [nameError, setNameError] = React.useState("Заполните это поле.");
-  const [descriptionError, setDescriptionError] = React.useState("Заполните это поле.");
+  const [nameError, setNameError] = React.useState('Заполните это поле.');
+  const [descriptionError, setDescriptionError] = React.useState('Заполните это поле.');
 
   function handleChangeName(evt) {
     setName(evt.target.value);
-    if(evt.target.value.length < 2 || evt.target.value.length > 200) {
+    if (evt.target.value.length < 2 || evt.target.value.length > 200) {
       setNameError('Текст должен быть не короче 2 символов');
-      if(!evt.target.value) {
+      if (!evt.target.value) {
         setNameError('Текст должен быть не короче 2 символов');
       }
     } else {
-      setNameError("");
+      setNameError('');
     }
   }
 
   function handleChangeDescription(evt) {
     setDescription(evt.target.value);
-    if(evt.target.value.length < 2 || evt.target.value.length > 40) {
+    if (evt.target.value.length < 2 || evt.target.value.length > 40) {
       setDescriptionError('Текст должен быть не короче 2 символов');
-      if(!evt.target.value) {
+      if (!evt.target.value) {
         setDescriptionError('Текст должен быть не короче 2 символов');
       }
     } else {
-      setDescriptionError("");
+      setDescriptionError('');
     }
   }
 
@@ -38,12 +38,12 @@ function useFormAndValidationProfileEdit() {
     switch (evt.target.name) {
       case 'name':
         setNameDirty(true);
-        break
+        break;
       case 'about':
         setDescriptionDirty(true);
-        break
+        break;
     }
-  }
+  };
 
   return {
     currentUser,
@@ -61,8 +61,8 @@ function useFormAndValidationProfileEdit() {
     setDescriptionError,
     handleChangeName,
     handleChangeDescription,
-    blurHandler
-  }
+    blurHandler,
+  };
 }
 
 export default useFormAndValidationProfileEdit;
