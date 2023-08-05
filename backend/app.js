@@ -23,8 +23,9 @@ app.use(cors({
   origin: [
     'https://lindasux.students.nomoreparties.co',
     'https://api.lindasux.students.nomoreparties.co',
-    'https://lindasux.students.nomoreparties.co',
-    'https://api.lindasux.students.nomoreparties.co',
+    'http://lindasux.students.nomoreparties.co',
+    'http://api.lindasux.students.nomoreparties.co',
+    'http://localhost:3000',
   ],
 }));
 

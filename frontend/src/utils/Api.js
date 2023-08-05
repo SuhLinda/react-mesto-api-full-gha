@@ -134,7 +134,7 @@ class Api {
 
 //API_____________________________________________________________________________
 const api = new Api({
-  url: 'https://api.lindasux.students.nomoreparties.co',
+  url: 'https://lindasux.students.nomoreparties.co',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
