@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.110.225
+IP 158.160.110.225
 
 Frontend https://lindasux.students.nomoreparties.co
 

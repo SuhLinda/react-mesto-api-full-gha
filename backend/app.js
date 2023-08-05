@@ -19,7 +19,7 @@ const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.en
 const app = express();
 mongoose.connect(DB_URL);
 
-app.use(cors({ origin: 'http://lindasux.students.nomoreparties.co' }));
+app.use(cors({ origin: 'http://api.lindasux.students.nomoreparties.co' }));
 
 app.use(helmet());
 app.use(bodyParser.json());
