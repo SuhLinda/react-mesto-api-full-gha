@@ -43,19 +43,20 @@ class Api {
         about: data.about,
         email: data.email,
         avatar: data.avatar,
+        _id: data._id,
       }),
     })
       .then(this._checkTheAnswer);
   }
 
   //смена аватара пользователя
-  setUserAvatar(data) {
+  setUserAvatar(avatar) {
     const urlId = `${this._url}/users/me/avatar`;
 
     return fetch(urlId, {
       method: 'PATCH',
       headers: this._setHeaders(),
-      body: JSON.stringify(data),
+      body: JSON.stringify(avatar),
     })
       .then(this._checkTheAnswer);
   }
@@ -72,7 +73,7 @@ class Api {
   }
 
   //подгрузим наши карточки на сервер
-  addNewCard(data) {
+  addNewCard(data, owner) {
     const urlId = `${this._url}/cards`;
 
     return fetch(urlId, {
@@ -83,6 +84,7 @@ class Api {
         link: data.link,
         _id: data._id,
         likes: data.likes,
+        owner
       }),
     })
       .then(this._checkTheAnswer);
@@ -132,7 +134,7 @@ class Api {
 
 //API_____________________________________________________________________________
 const api = new Api({
-  url: 'http://localhost:5000',
+  url: 'http://localhost:3000',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',

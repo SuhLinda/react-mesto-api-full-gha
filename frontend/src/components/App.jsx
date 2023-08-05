@@ -46,9 +46,8 @@ function App() {
   useEffect(() => {
     if (isLoggedIn) {
       api.getUserData()
-        .then((data) => {
-          console.log(data)
-          setCurrentUser(data);
+        .then((user) => {
+          setCurrentUser(user);
         })
         .catch((err) => {
           console.log(`ошибка: ${err}`);
@@ -189,12 +188,6 @@ function App() {
             name: data.name,
             link: data.link,
             likes: data.likes,
-            owner: {
-              name: data.owner.name,
-              about: data.owner.about,
-              avatar: data.owner.avatar,
-              _id: data.owner._id,
-            },
           };
           setCards([newCard, ...cards]);
         })
@@ -227,15 +220,16 @@ function App() {
       .then((response) => {
         if (response.token) {
           setSuccess(true);
-          //const token = response.token;
           localStorage.setItem('token', response.token);
           setCurrentUser({
-            email,
-            password,
-            name: response.name,
-            about: response.about,
-            avatar: response.avatar,
-            _id: response._id,
+            data: {
+              email,
+              password,
+              name: response.name,
+              about: response.about,
+              avatar: response.avatar,
+              _id: response._id,
+            }
           });
           setLoggedIn(true);
           setImage(successfully);

@@ -5,34 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dff52de2-e3f3-43de-89a2-e59bf38e508c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/middlewares/logger.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/cards.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/middlewares/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/middlewares/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/card.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/card.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/blocks/popup/__fieldset/popup__fieldset.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/blocks/popup/__fieldset/popup__fieldset.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/AddPlacePopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddPlacePopup.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Card.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DeleteCardPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DeleteCardPopup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/EditAvatarPopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EditAvatarPopup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/EditProfilePopup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EditProfilePopup.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/AppContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/contexts/AppContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/contexts/CurrentUserContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/contexts/CurrentUserContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useFormAndValidationAddPlace.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useFormAndValidationAddPlace.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useFormAndValidationAvatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useFormAndValidationAvatar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useFormAndValidationProfileEdit.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useFormAndValidationProfileEdit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/usePopupClose.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/usePopupClose.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/utils/Api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/Api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/auth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/auth.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +85,7 @@
       <updated>1690881507726</updated>
       <workItem from="1690881511434" duration="13479000" />
       <workItem from="1690970412858" duration="495000" />
-      <workItem from="1690971270434" duration="69413000" />
+      <workItem from="1690971270434" duration="78243000" />
     </task>
     <servers />
   </component>

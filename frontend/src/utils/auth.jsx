@@ -60,4 +60,4 @@ export default class Auth {
   }
 }
 
-export const auth = new Auth('http://localhost:5000');
+export const auth = new Auth('http://localhost:3000');

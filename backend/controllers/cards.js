@@ -15,14 +15,10 @@ function getCards(req, res, next) {
 }
 
 function createCard(req, res, next) {
+  const owner = req.user._id;
   return Card.create({
     ...req.body,
-    owner: {
-      _id: req.user._id,
-      name: req.user.name,
-      about: req.user.about,
-      avatar: req.user.avatar,
-    },
+    owner,
   })
     .then((card) => {
       res.status(201).send(card);

@@ -46,7 +46,7 @@ function AddPlacePopup(
 
     onUpdateCards({
       name: name,
-      link: link
+      link: link,
     });
   }
 
