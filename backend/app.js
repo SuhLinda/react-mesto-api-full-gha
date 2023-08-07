@@ -22,10 +22,6 @@ mongoose.connect(DB_URL);
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://lindasux.students.nomoreparties.co',
-    'http://lindasux.students.nomoreparties.co',
-    'https://api.lindasux.students.nomoreparties.co',
-    'http://api.lindasux.students.nomoreparties.co',
   ],
 }));
 
