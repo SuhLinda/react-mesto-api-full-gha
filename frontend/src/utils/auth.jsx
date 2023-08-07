@@ -60,4 +60,10 @@ export default class Auth {
   }
 }
 
-export const auth = new Auth('https://api.lindasux.students.nomoreparties.co');
+export const auth = new Auth(
+    [
+        'http://localhost:3001',
+        'https://api.lindasux.students.nomoreparties.co',
+        'http://api.lindasux.students.nomoreparties.co',
+    ],
+);
