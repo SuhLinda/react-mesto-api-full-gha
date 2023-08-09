@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -21,7 +23,7 @@ mongoose.connect(DB_URL);
 
 app.use(cors({
   origin: [
-    'http://localhost:3001',
+    'http://localhost:3000',
     'https://lindasux.students.nomoreparties.co',
   ],
 }));
