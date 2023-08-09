@@ -73,7 +73,7 @@ class Api {
   }
 
   //подгрузим наши карточки на сервер
-  addNewCard(data, owner) {
+  addNewCard(data) {
     const urlId = `${this._url}/cards`;
 
     return fetch(urlId, {
@@ -84,7 +84,7 @@ class Api {
         link: data.link,
         _id: data._id,
         likes: data.likes,
-        owner
+        owner: data.owner,
       }),
     })
       .then(this._checkTheAnswer);
