@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+
+const { NODE_ENV, JWT_SECRET } = process.env;
 const ErrorUnauthorized = require('../errors/ErrorUnauthorized');
 
 function authorizationUser(req, res, next) {
@@ -15,7 +17,7 @@ function authorizationUser(req, res, next) {
   try {
     payload = jwt.verify(
       token,
-      'some-secret-key',
+      NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
       { expiresIn: '7d' },
     );
     req.user = {
