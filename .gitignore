@@ -10,7 +10,8 @@ node_modules
 
 # Optional REPL history
 .DS_Store
-.idea
+backend/.idea
+frontend/.idea
 .vscode
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
