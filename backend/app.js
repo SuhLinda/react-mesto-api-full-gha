@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const auth = require('./middlewares/auth');
 const limiter = require('./middlewares/rateLimit');
-
 const handleError = require('./middlewares/handleError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const entrance = require('./routes/auth');
