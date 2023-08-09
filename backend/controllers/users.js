@@ -5,7 +5,6 @@ const User = require('../models/user');
 const { NODE_ENV, JWT_SECRET } = process.env;
 const { SALT_QUANTITY } = require('../utils/constants');
 const ErrorBadRequest = require('../errors/ErrorBadRequest');
-const ErrorUnauthorized = require('../errors/ErrorUnauthorized');
 const ErrorNotFound = require('../errors/ErrorNotFound');
 const ErrorUserExists = require('../errors/ErrorUserExists');
 
