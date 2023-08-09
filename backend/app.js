@@ -9,7 +9,7 @@ const { errors } = require('celebrate');
 const auth = require('./middlewares/auth');
 const limiter = require('./middlewares/rateLimit');
 const handleError = require('./middlewares/handleError');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { requestLogger, errorLogger } = require('./logs/logger');
 const entrance = require('./routes/auth');
 const routesUsers = require('./routes/users');
 const routesCards = require('./routes/cards');
@@ -29,8 +29,8 @@ app.use(cors({
 
 app.use(helmet());
 app.use(bodyParser.json());
-app.use(limiter);
 app.use(requestLogger);
+app.use(limiter);
 
 app.get('/crash-test', () => {
   setTimeout(() => {

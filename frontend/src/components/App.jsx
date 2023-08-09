@@ -188,6 +188,7 @@ function App() {
             name: data.name,
             link: data.link,
             likes: data.likes,
+            owner: currentUser.data._id,
           };
           setCards([newCard, ...cards]);
         })

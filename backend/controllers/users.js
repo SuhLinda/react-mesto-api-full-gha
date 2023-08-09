@@ -30,9 +30,7 @@ function getUsers(req, res, next) {
     .then((users) => {
       res.send({ data: users });
     })
-    .catch((err) => {
-      next(err);
-    });
+    .catch(next);
 }
 
 function getUser(req, res, next) {
@@ -67,7 +65,7 @@ function createUser(req, res, next) {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new ErrorBadRequest('Переданы некорректные данные'));
+        return next(new ErrorBadRequest('Переданы некорректные данные'));
       }
       if (err.code === 11000) {
         return next(new ErrorUserExists('Пользователь с таким email существует'));
@@ -109,10 +107,7 @@ function login(req, res, next) {
         _id,
       });
     })
-    .catch((err) => {
-      next(new ErrorUnauthorized('Неправильные почта или пароль'));
-      next(err);
-    });
+    .catch(next);
 }
 
 function updateProfile(req, res, next) {
